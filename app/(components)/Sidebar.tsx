@@ -1,7 +1,8 @@
 "use client";
 
-import { LockIcon, Search, Settings } from "lucide-react";
+import { Icon, LockIcon, LucideIcon, Search, Settings } from "lucide-react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
 import React from "react";
 
 export default function Sidebar() {
@@ -34,3 +35,17 @@ export default function Sidebar() {
         </div>
     );
 }
+
+interface SidebarLinkProps {
+    href: string;
+    icon: LucideIcon;
+    label: string;
+    isCollapsed: boolean;
+}
+
+const SidebarLink = ({ href, icon, label, isCollapsed }: SidebarLinkProps) => {
+    const pathName = usePathname();
+    const isActive =
+        pathName === href || (pathName === "/" && href === "/dashboard");
+    const screenwidth = window.innerWidth;
+};
